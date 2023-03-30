@@ -13,10 +13,9 @@
 ActiveRecord::Schema.define(version: 2023_03_30_034048) do
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tweet", null: false
     t.string "content", null: false
     t.string "image"
-    t.string "comment"
-    t.string "tweet", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,7 +24,6 @@ ActiveRecord::Schema.define(version: 2023_03_30_034048) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
-    t.string "name", null: false
     t.text "profile", null: false
     t.string "location", null: false
     t.date "birthday", null: false
