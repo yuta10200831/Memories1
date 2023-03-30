@@ -1,24 +1,92 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column              | Type       | Options                              |
+| ------------------  | ---------- | ------------------------------       |
+| nickname            | string     | null: false                          |
+| name                | string     | null: false , unique: true           |
+| profile             | text       | null: false                          |
+| location            | string     | null: false                          |
+| birthday            | date       | null: false                          |
+| profile_image       | string     |                                      |
+| header_image        | string     |                                      |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :tweets
+- has_many :follows
+- has_many :lists
+- has_many :list_members
+- has_many :follow_lists
 
-* System dependencies
 
-* Configuration
+## tweets テーブル
 
-* Database creation
+| Column             | Type       | Options                              |
+| ------------------ | ---------- | ------------------------------       |
+| user_id            | references | null: false                          |
+| content            | text       | null: false                          |
+| image              | string     |                                      |
+| comment            | string     | null: false                          |
+| tweet              | integer    | null: false                          |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many :retweets
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## lists テーブル
 
-* ...
+| Column           | Type       | Options                              |
+| ---------------- | ---------- | ------------------------------       |
+| user_id          | references | null: false                          |
+| name             | string     | null: false                          |
+| description      | string     | null: false                          |
+| private          | string     | null: false                          |
+
+### Association
+- belongs_to :user
+
+
+## list_members テーブル
+
+| Column           | Type       | Options                              |
+| ----------       | ---------- | ------------------------------       |
+| user_id          | references | null: false                          |
+| list_id          | references | null: false                          |
+
+### Association
+- belongs_to :card
+
+
+## follows テーブル
+
+| Column           | Type       | Options                              |
+| ---------------- | ---------- | ------------------------------       |
+| follower_id      | string     | null: false                          |
+| followee_id      | integer    | null: false                          |
+
+### Association
+- belongs_to :user
+
+
+## follow_lists テーブル
+
+| Column           | Type       | Options                              |
+| ---------------- | ---------- | ------------------------------       |
+| user_id          | string     | null: false                          |
+| list_id          | string     | null: false                          |
+
+### Association
+- belongs_to :user
+
+
+## retweets テーブル
+
+| Column           | Type       | Options                              |
+| ---------------- | ---------- | ------------------------------       |
+| user_id          | references | null: false                          |
+| tweet_id         | references | null: false                          |
+
+### Association
+- belongs_to :tweet
