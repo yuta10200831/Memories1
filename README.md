@@ -7,13 +7,16 @@
 | profile             | text       | null: false                          |
 | location            | string     | null: false                          |
 | birthday            | date       | null: false                          |
-| profile_image       | string     | null: false                          |
-| header_image        | string     | null: false                          |
+| profile_image       | string     |                                      |
+| header_image        | string     |                                      |
 
 ### Association
 
-- has_many :items
-- has_many :cards
+- has_many :tweets
+- has_many :follows
+- has_many :lists
+- has_many :list_members
+- has_many :follow_lists
 
 
 ## tweets テーブル
@@ -22,14 +25,14 @@
 | ------------------ | ---------- | ------------------------------       |
 | user_id            | references | null: false                          |
 | content            | text       | null: false                          |
-| image              | string     | null: false                          |
+| image              | string     |                                      |
 | comment            | string     | null: false                          |
 | tweet              | integer    | null: false                          |
 
 ### Association
 
+- has_many :retweets
 - belongs_to :user
-- has_one :card
 
 
 ## lists テーブル
@@ -42,7 +45,7 @@
 | private          | string     | null: false                          |
 
 ### Association
-- belongs_to :card
+- belongs_to :user
 
 
 ## list_members テーブル
@@ -64,7 +67,7 @@
 | followee_id      | integer    | null: false                          |
 
 ### Association
-- belongs_to :card
+- belongs_to :user
 
 
 ## follow_lists テーブル
@@ -75,7 +78,7 @@
 | list_id          | string     | null: false                          |
 
 ### Association
-- belongs_to :card
+- belongs_to :user
 
 
 ## retweets テーブル
@@ -86,4 +89,4 @@
 | tweet_id         | references | null: false                          |
 
 ### Association
-- belongs_to :card
+- belongs_to :tweet
