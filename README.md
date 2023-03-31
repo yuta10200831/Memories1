@@ -31,7 +31,6 @@
 
 ### Association
 
-- has_many :retweets
 - belongs_to :user
 
 
@@ -81,12 +80,3 @@
 - belongs_to :user
 
 
-## retweets テーブル
-
-| Column           | Type       | Options                              |
-| ---------------- | ---------- | ------------------------------       |
-| user_id          | references | null: false                          |
-| tweet_id         | references | null: false                          |
-
-### Association
-- belongs_to :tweet
