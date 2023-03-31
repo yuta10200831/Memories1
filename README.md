@@ -24,14 +24,13 @@
 | Column             | Type       | Options                              |
 | ------------------ | ---------- | ------------------------------       |
 | user_id            | references | null: false                          |
-| content            | text       | null: false                          |
+| content            | string     | null: false                          |
 | image              | string     |                                      |
-| comment            | string     | null: false                          |
-| tweet              | integer    | null: false                          |
+| comment            | string     |                                      |
+| tweet              | string     | null: false                          |
 
 ### Association
 
-- has_many :retweets
 - belongs_to :user
 
 
@@ -81,12 +80,3 @@
 - belongs_to :user
 
 
-## retweets テーブル
-
-| Column           | Type       | Options                              |
-| ---------------- | ---------- | ------------------------------       |
-| user_id          | references | null: false                          |
-| tweet_id         | references | null: false                          |
-
-### Association
-- belongs_to :tweet
